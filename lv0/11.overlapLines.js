@@ -1,4 +1,4 @@
-/* 겹치는 선분의 길이
+/** 겹치는 선분의 길이
 
 * 문제 설명
 * 선분 3개가 평행하게 놓여 있습니다.
@@ -22,11 +22,3 @@
 * url - https://school.programmers.co.kr/learn/courses/30/lessons/120876
 */
 
-
-
-
-
-// function solution(lines) {
-//   var answer = 0;
-//   return answer;
-// }
