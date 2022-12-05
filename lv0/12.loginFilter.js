@@ -30,5 +30,21 @@
  * url - https://school.programmers.co.kr/learn/courses/30/lessons/120883
  */
 
-id = ["meosseugi", "1234"]
-db = [["rardss", "123"], ["yyoom", "1234"], ["meosseugi", "1234"]]
+
+
+const solution = (id_pw, db) => {
+  let count = '';
+  db.filter((item) => {
+    if (item[0] === id_pw[0]) {
+      count = '아이디접속'
+      if (item[1] === id_pw[1]) {
+        count = '로그인'
+      }
+    }
+  })
+  if (count === '로그인') return "login";
+  if (count === '아이디접속') return "wrong pw";
+  if (count === '') return "fail";
+}
+
+solution(["meosseugi", "1234"], [["rardss", "123"], ["yyoom", "1234"], ["meoseugi", "234"]])
