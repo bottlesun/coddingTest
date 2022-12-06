@@ -1,4 +1,4 @@
-/** 안전지대
+/** 안전지대 // 못품
 
  * 문제 설명
  * 다음 그림과 같이 지뢰가 있는 지역과 지뢰에 인접한 위, 아래, 좌, 우 대각선 칸을 모두 위험지역으로 분류합니다.
@@ -26,43 +26,26 @@
  */
 
 
-const solution = (board) => {
-  let answer = 0;
 
-  for (let i = 0 ; i < board.length ; i ++) {
-    for (let j = 0 ; j < board[i].length ; j ++) {
-      if (board[i][j] === 1) {
-        if(i !== 0 && board[i-1][j] !== 1)  board[i-1][j] = 2;
-        if(i !== board.length-1 && board[i+1][j] !== 1)  board[i+1][j] = 2;
-        if(j !== 0 && board[i][j-1] !== 1) board[i][j-1] = 2;
-        if(j !== 0 && board[i][j+1] !== 1) board[i][j+1] = 2;
-        if(i !== 0 && j !== 0 && board[i-1][j-1] !== 1) board[i-1][j-1] = 2;
-        if(i !== board.length-1 && j !== board[i].length-1 && board[i+1][j+1] !== 1) board[i+1][j+1] = 2;
-        if(i !== board.length-1 && j !== 0 && board[i+1][j-1] !== 1) board[i+1][j-1] = 2;
-        if(i !== 0 && j !== board[i].length-1 && board[i-1][j+1] !== 1) board[i-1][j+1] = 2;
+function solution(b) {
+  const directions = [[0, 0], [0, 1], [0, -1], [1, 1], [1, 0], [1, -1], [-1, -1], [-1, 0], [-1, 1]]
+  let bombSet = new Set();
+
+  for (let i = 0; i < b.length; i++) { // x 축
+    for (let j = 0; j < b[i].length; j++) { // y 축
+      if (b[i][j] === 1) { // 1이 있다면?
+        directions.forEach(el => { // 경우에 수 forEach
+          let [nextX, nextY] = el;
+          [nextX, nextY] = [i + nextX, j + nextY];
+          if (nextX >= 0 && nextX < b.length && nextY >= 0 && nextY < b[i].length) {
+            bombSet.add(nextX + ' ' + nextY);
+          }
+        })
       }
     }
   }
-  board.map((item) => item.filter((b) => b === 0 ? answer ++ :  0));
-
-  return answer;
+  console.log(bombSet)
+  return b.length * b[0].length - bombSet.size;
 }
 
-solution([[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]]);
-/**
- 1 기준 위 3 아래 3 양 옆
- b[3] = 1
-
- a[2,3,4]
- b[2,3,4]
- d[2,3,4]
-
- import numpy as np
- def solution(board):
- board = np.array(board)
- rows, cols = np.where(board == 1)
- for r, c in zip(rows, cols):
- board[r-1:r+2, c-1:c+2] = 1
- return len(board[board==0])
-
- */
+solution([[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 1, 0], [0, 0, 0, 0, 0]]);
