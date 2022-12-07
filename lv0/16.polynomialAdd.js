@@ -31,6 +31,24 @@
 
 
 const solution = (p) => {
+  let [x,n] = p.split('+').reduce(([a,b],c) => {
+    if(c.includes('x')){
+      return [a + Number(c.trim().replace('x','') || 1), b]
+    }
+    return [a, b + Number(c)]
+  },[0,0]);
+
+  x === 1 && (x = ['']);
+  if(x === 0) return  n.toString()
+  if(x !== 0) return  n === 0 ? `${x}x` : `${x}x + ${n}`;
+}
+
+
+
+solution("3 + 7 + 1")
+
+/*
+const solution = (p) => {
   let [x, c] = p.split('+').reduce(([a, b], s) => {
     if (s.includes('x')) {
       return [a + Number(s.trim().replace('x','') || 1), b];
@@ -38,6 +56,4 @@ const solution = (p) => {
     return [a, b + Number(s)];
   },[0,0])
 }
-
-
-solution("3x + 7 + x")
+* */
