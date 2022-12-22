@@ -15,7 +15,7 @@
 * 두 선수는 1번 음식 1개, 2번 음식 2개, 3번 음식 3개씩을 먹게 되므로 음식의 배치는 "1223330333221"이 됩니다.
 * 따라서 1번 음식 1개는 대회에 사용하지 못합니다.
 *
-* 수웅이가 준비한 음식의 양을 칼로리가 적은 순서대로 나타내는 정수 배열 food가 주어졌을 때,
+* 수웅이가 준비한 음식의 양을 칼로리가 적은 순서대로 나타내는 정수 배열 food 가 주어졌을 때,
 * 대회를 위한 음식의 배치를 나타내는 문자열을 return 하는 solution 함수를 완성해주세요.
 
 제한사항
@@ -35,10 +35,32 @@
 * url - https://school.programmers.co.kr/learn/courses/30/lessons/134240
 */
 
+/*
 const solution = (food) => {
+  let answer = [];
 
+  food.map(item => {
+    for (let i = 0; i < Math.floor(item / 2); i++) {
+      answer.push(food.indexOf(item))
+    }
+  });
+  console.log(answer.join('') + '0' + answer.reverse().join(''))
+  return answer.join('') + '0' + answer.reverse().join('')
 };
+*/
 
-solution([1, 3, 4, 6]);
+const solution = (food) => {
+  let answer = [];
+
+  food.map((item,no) => {
+    for (let i = 0; i < Math.floor(item / 2); i++) {
+      answer.push(food.indexOf(item,no))
+    }
+  })
+
+  return answer.join('') + '0' + answer.reverse().join('');
+}
+
+solution([1,3,2,3]); // 1230321
 
 
