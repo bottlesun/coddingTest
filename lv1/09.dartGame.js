@@ -42,39 +42,19 @@
 * 문제해설 - https://tech.kakao.com/2017/09/27/kakao-blind-recruitment-round-1/
 */
 
-// const solution = (dartResult) => {
-//   const array = [...dartResult];
-//   const sNum = dartResult.indexOf('S') ;
-//   const dNum = dartResult.indexOf('D') ;
-//   const tNum = dartResult.indexOf('T') ;
-//   const multiply = dartResult.indexOf('*');
-//   const minus = dartResult.indexOf('#');
-//
-//   const d = (num) => {
-//     return Number(num * num)
-//   }
-//   const t = (num) => {
-//     return Number(num * num * num)
-//   }
-//   const s = (num) => {
-//     return Number(num)
-//   }
-//
-//
-//   if (dartResult.indexOf('*') !== -1) {
-//     const number = array[dartResult.indexOf(multiply-2)];
-//      array.splice(number,1,number*2)
-//   }
-//   if (dartResult.indexOf('#') !== -1) {
-//     array.splice(multiply, 1, '(-1)')
-//   }
-//
-//   array.splice(sNum,1,'+')
-//   array.splice(dNum,1,'+')
-//   array.splice(tNum,1,'+')
-//   console.log(array.join(''))
-// }
-//
-// solution('1S2D*3T')
-//
-//
+const solution = (dartResult) => {
+  const array = [...dartResult];
+  const newArray = []
+  console.log(array.indexOf('S'))
+  for(let i = 0; i< array.length ; i ++) {
+
+    // if(array[i] === 'S') newArray.push();
+    // if(array[i] === 'D') newArray.push( ** 2);
+    // if(array[i] === 'T') newArray.push( ** 3);
+  }
+    console.log(array)
+}
+
+solution('1S2D*3T');
+
+
