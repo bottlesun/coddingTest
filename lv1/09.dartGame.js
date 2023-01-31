@@ -42,19 +42,40 @@
 * 문제해설 - https://tech.kakao.com/2017/09/27/kakao-blind-recruitment-round-1/
 */
 
-const solution = (dartResult) => {
-  const array = [...dartResult];
-  const newArray = []
-  console.log(array.indexOf('S'))
-  for(let i = 0; i< array.length ; i ++) {
+// 내가 못품
+function solution(dartResult) {
+  let answer = 0;
+  let score = 0;
+  let cnt = [];
 
-    // if(array[i] === 'S') newArray.push();
-    // if(array[i] === 'D') newArray.push( ** 2);
-    // if(array[i] === 'T') newArray.push( ** 3);
+  for (let i = 0; i < dartResult.length; i++) {
+    //점수가 주어질때
+    if (!isNaN(dartResult[i])) {
+      //i-1이 1이고 i가 숫자면 10점..
+      //즉 10점인 경우와 그 외의 경우 처리
+      score = Number(dartResult[i - 1]) === 1 ? 10 : Number(dartResult[i]);
+      //보너스 S일때
+    } else if (dartResult[i] === "S") {
+      cnt.push(score);
+      //보너스 D일때
+    } else if (dartResult[i] === "D") {
+      cnt.push(Math.pow(score, 2));
+      //보너스 T일때
+    } else if (dartResult[i] === "T") {
+      cnt.push(Math.pow(score, 3));
+      //옵션 *일떄
+    } else if (dartResult[i] === "*") {
+      cnt[cnt.length - 2] = cnt[cnt.length - 2] * 2;
+      cnt[cnt.length - 1] = cnt[cnt.length - 1] * 2;
+      //옵션 #일때
+    } else if (dartResult[i] === "#") {
+      cnt[cnt.length - 1] = -1 * cnt[cnt.length - 1];
+    }
   }
-    console.log(array)
+  //3개의 점수 합산
+  answer = cnt.reduce((acc, cur) => acc + cur, 0);
+  return answer;
 }
-
-solution('1S2D*3T');
+solution('1D2S3T*');
 
 

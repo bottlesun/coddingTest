@@ -32,11 +32,3 @@
  * url - https://school.programmers.co.kr/learn/courses/30/lessons/67256
  *
  */
-
-
-function solution(numbers, hand) {
-  let answer = '';
-
-
-  return answer;
-}
