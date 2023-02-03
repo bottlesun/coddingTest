@@ -38,4 +38,4 @@ function solution(X, Y) {
   return answer
 }
 
-solution(5525,1255)
+solution(5525,1255);
