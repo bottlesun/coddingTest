@@ -48,6 +48,7 @@ function solution(n, lost, reserve) {
 
 // solution(4, [2, 3], [3, 4]); // 3
 // solution(5, [2, 4], [1, 3, 5]); // 5
+
 // solution(	8, [5, 6, 7], [4, 5]); // 기대값 6
 solution(5, [2, 4], [3]); // 기대값 4
 
