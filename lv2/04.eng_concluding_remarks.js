@@ -49,23 +49,27 @@
 */
 
 function solution(n, words) {
-  var answer = [];
-  for (let i = 0; i < n; i++) {
-    console.log(i);
+  let usedWords = []; // 중복된 단어를 저장하는 배열
+  let answer = [];
+
+  for (let i = 0; i < words.length; i++) {
+    let currentWord = words[i];
+
+    // 중복된 단어가 사용되거나 규칙에 어긋나는 경우
+    if (
+      usedWords.includes(currentWord) ||
+      (i > 0 &&
+        currentWord.charAt(0) !== words[i - 1].charAt(words[i - 1].length - 1))
+    ) {
+      // 몇 번째 차례에 탈락했는지 계산하여 answer에 저장
+      answer.push((i % n) + 1, Math.floor(i / n) + 1);
+      break; // 탈락한 경우 반복문 종료
+    } else {
+      usedWords.push(currentWord); // 사용된 단어를 저장
+    }
   }
 
-  return answer;
+  return answer.length === 0 ? [0, 0] : answer;
 }
 
-solution(
-  3,
-  "tank",
-  "kick",
-  "know",
-  "wheel",
-  "land",
-  "dream",
-  "mother",
-  "robot",
-  "tank"
-);
+solution(2, ["hello", "one", "even", "never", "now", "world", "draw"]);
